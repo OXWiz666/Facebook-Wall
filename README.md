@@ -16,7 +16,7 @@ A small, 2008-inspired social wall built for the Facebook Wall challenge. Visito
 2. Install dependencies with `npm install`.
 3. Create a Supabase project.
 4. In the Supabase SQL Editor, run [`supabase/setup.sql`](./supabase/setup.sql). Re-run it after pulling changes to provision guest avatars, post photos, likes, and comments.
-5. In Supabase Dashboard, open Integrations > Data API and expose `public.posts` if it is not already exposed. Confirm the `posts` table is included in the `supabase_realtime` publication.
+5. In Supabase Dashboard, open **Integrations  Data API** and expose `public.posts` if it is not already exposed. Confirm the `posts` table is included in the `supabase_realtime` publication.
 6. Copy `.env.example` to `.env.local` and enter the Supabase project URL and publishable key. Do not use a service-role or secret key in this app.
 7. Run `npm run dev` and open [http://localhost:3000](http://localhost:3000).
 
@@ -24,4 +24,12 @@ The SQL enables RLS, allows anonymous visitors to read and create posts, comment
 
 ## Deploy to Vercel
 
-Import this repository into Vercel and add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` under the project's environment variables for Preview and Production.
+Import this repository into Vercel and add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` under the project's environment variables for Preview and Production. Deploy, then verify posting, persistence after refresh, newest-first ordering, and live updates from a second browser session.
+
+## Project layout
+
+- `app/`: App Router page, document shell, and global styles
+- `components/`: wall feed, composer, post card, and UI primitives
+- `lib/supabase/client.ts`: browser Supabase client
+- `supabase/setup.sql`: schema, access policies, and Realtime publication setup
+
